@@ -25,7 +25,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $< 
 
 clean:
-	$(RM) $(OBJS) $(TARGET) $(DEPENDS)
+	$(RM) $(OBJS) $(TARGET) $(DEPENDS) temp.dat
 
 -include $(DEPENDS)
 
