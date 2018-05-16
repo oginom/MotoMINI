@@ -1,3 +1,6 @@
+/*
+ * numogi.h
+ */
 
 #include "numogi.h"
 

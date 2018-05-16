@@ -1,6 +1,9 @@
+/*
+ * numogi.h
+ */
 
-#ifndef _NUMOGI_H_
-#define _NUMOGI_H_
+#pragma once
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -165,5 +168,4 @@ static ostream& operator << (ostream& o, const transmat& T){
 }
 
 void numogi_sample();
-#endif //_NUMOGI_H_
 

@@ -40,4 +40,3 @@ void MotoMINI::exec(float dt) {
     }
 }
 
-

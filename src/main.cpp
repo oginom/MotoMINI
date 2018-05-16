@@ -1,3 +1,8 @@
+/*
+ * main.cpp
+ * created by Masahiro Ogino
+ */
+
 #include <iostream>
 #include <math.h>
 #include <unistd.h>

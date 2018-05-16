@@ -6,7 +6,7 @@
 #include <stdarg.h>
 #include "CGnuplot.h"
 
-const std::string CGnuplot::TempFileName = "temp.dat";
+const std::string CGnuplot::TempFileName = "gnuplot_tmp.dat";
 
 CGnuplot::CGnuplot()
 {

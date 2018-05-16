@@ -1,6 +1,8 @@
+/*
+ * Trajectory.h
+ */
 
-#ifndef _TRAJECTORY_H_
-#define _TRAJECTORY_H_
+#pragma once
 
 #include "numogi.h"
 #include "RobotModel.h"
@@ -26,5 +28,3 @@ public:
     float dphi[6];
 };
 
-
-#endif//_TRAJECTORY_H_

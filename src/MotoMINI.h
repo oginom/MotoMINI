@@ -1,6 +1,8 @@
+/*
+ * MotoMINI.h
+ */
 
-#ifndef _MOTOMINI_H_
-#define _MOTOMINI_H_
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -41,6 +43,4 @@ public:
     MotoMINI();
     void exec(float dt);
 };
-
-#endif // _MOTOMINI_H_
 

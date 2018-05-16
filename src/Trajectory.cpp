@@ -1,3 +1,6 @@
+/*
+ * Trajectory.cpp
+ */
 
 #include "Trajectory.h"
 

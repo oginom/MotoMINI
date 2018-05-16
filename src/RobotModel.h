@@ -1,6 +1,8 @@
+/*
+ * RobotModel.h
+ */
 
-#ifndef _ROBOTMODEL_H_
-#define _ROBOTMODEL_H_
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -42,6 +44,4 @@ public:
     void exec(float dt);
 
 };
-
-#endif // _ROBOTMODEL_H_
 

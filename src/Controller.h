@@ -1,6 +1,8 @@
+/*
+ * Controller.h
+ */
 
-#ifndef _CONTROLLER_H_
-#define _CONTROLLER_H_
+#pragma once
 
 #include "numogi.h"
 #include "Trajectory.h"
@@ -18,5 +20,3 @@ public:
     void exec(float dt, float *observed, float *target);
 };
 
-
-#endif // _CONTROLLER_H_
