@@ -25,7 +25,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $< 
 
 clean:
-	$(RM) $(OBJS) $(TARGET) $(DEPENDS) temp.dat
+	$(RM) $(OBJS) $(TARGET) $(DEPENDS) gnuplot_tmp.dat
 
 -include $(DEPENDS)
 
