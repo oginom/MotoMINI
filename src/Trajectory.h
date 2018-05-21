@@ -10,8 +10,13 @@
 class Trajectory {
 public:
     float dur;
+    float spent;
+    float target[6];
     //jointstatus targetjs;
-    Trajectory() {}
+    Trajectory() {
+        spent = 0;
+        dur = 1;
+    }
     virtual void exec(float dt);
     virtual float overtime();
     //virtual transmat getTransform();
@@ -21,8 +26,11 @@ typedef Trajectory traj;
 
 class JointSpaceTrajectory : public Trajectory {
 public:
+    RobotModel *mdl;
     JointSpaceTrajectory() {}
-    //JointSpaceTrajectory(RobotModel *mdl);
+    JointSpaceTrajectory(RobotModel *mdl_) {
+        mdl = mdl_;
+    }
     //Kinematics* k;
     float phi[6];
     float dphi[6];

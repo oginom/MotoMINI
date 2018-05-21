@@ -40,5 +40,7 @@ void numogi_sample() {
     cout << "numogi_sample" << endl;
     rotation r = Rot(Z, M_PI_2);
     std::cout << r << std::endl;
+    transmat t = transmat();
+    std::cout << t << std::endl;
 }
 

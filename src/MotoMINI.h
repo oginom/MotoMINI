@@ -41,6 +41,7 @@ public:
     PDController *ctl;
 
     MotoMINI();
+    void addTrajectory(Trajectory *t);
     void exec(float dt);
 };
 

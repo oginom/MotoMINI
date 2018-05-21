@@ -22,6 +22,12 @@ void test() {
     rep(i, 6) cout << ph[i] << " ";
     cout << endl;
 
+    Trajectory *t1 = new Trajectory();
+    mm->addTrajectory(t1);
+    for (int i=0; i<20; ++i) {
+        mm->exec(0.1);
+    }
+
     /*/
     transmat t = transmat();
 
@@ -102,8 +108,7 @@ int main(int argc, char** argv) {
     cout << "Hell Ogino World" << endl;
 
     //numogi_sample();
-    plot_test();
-
+    //plot_test();
     test();
 
     return 0;

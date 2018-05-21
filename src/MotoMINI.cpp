@@ -17,11 +17,18 @@ MotoMINI::MotoMINI() {
     ctl = new PDController();
 }
 
+void MotoMINI::addTrajectory(Trajectory *t) {
+    trajvec.push_back(t);
+}
+
 void MotoMINI::exec(float dt) {
-    std::vector<Trajectory*>::iterator it;
+    if (trajvec.size() == 0) {
+        return;
+    }
+    std::vector<Trajectory*>::iterator it = trajvec.begin();
     float overtime = dt;
-    while (trajvec.size() > 0) {
-        it = trajvec.begin();
+    while (it != trajvec.end()) {
+        //it = trajvec.begin();
         (*it)->exec(overtime);
         overtime = (*it)->overtime();
         if (0 < overtime) {
@@ -31,12 +38,10 @@ void MotoMINI::exec(float dt) {
             break;
         }
     }
-    if (it != trajvec.end()) {
-        //transmat targetT = (*it)->getTransform();
-        float observed[6] = {0};
-        //float *target = mdl->inverseKinematics(targetT);
-        float *target = (*it)->getTarget();
-        ctl->exec(dt, observed, target);
-    }
+    //transmat targetT = (*it)->getTransform();
+    float observed[6] = {0, 0, 0, 0, 0, 0};
+    //float *target = mdl->inverseKinematics(targetT);
+    float *target = (*it)->getTarget();
+    ctl->exec(dt, observed, target);
 }
 

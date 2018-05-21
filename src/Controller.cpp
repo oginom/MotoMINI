@@ -10,6 +10,6 @@ PDController::PDController() {
 
 void PDController::exec(float dt, float *observed, float *target) {
     rep(i, d) {
-        std::cout << observed[i] << " " << target[i] << std::endl;
+        std::cout << "obsv:" << observed[i] << "trgt:" << target[i] << std::endl;
     }
 }
