@@ -10,8 +10,15 @@
 
 class RobotModel {
 public:
+    virtual void setAngle(int i, float angle) {}
+    virtual float getAngle(int i) { return 0; }
+    virtual void setAngles(float *angles) {}
+    virtual float *getAngles() { return nullptr; }
+    virtual void setTransform(transmat tra) {}
+    virtual transmat getTransform() { return transmat(); }
+    virtual bool forwardKinematics() { return false; }
     virtual float *inverseKinematics(transmat T) {
-        return NULL;
+        return nullptr;
     }
 };
 

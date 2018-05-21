@@ -28,12 +28,10 @@ void MotoMINI::exec(float dt) {
     std::vector<Trajectory*>::iterator it = trajvec.begin();
     float overtime = dt;
     while (it != trajvec.end()) {
-        //it = trajvec.begin();
         (*it)->exec(overtime);
         overtime = (*it)->overtime();
         if (0 < overtime) {
             it = trajvec.erase(it);
-            //s = NULL;
         } else {
             break;
         }
@@ -41,7 +39,7 @@ void MotoMINI::exec(float dt) {
     //transmat targetT = (*it)->getTransform();
     float observed[6] = {0, 0, 0, 0, 0, 0};
     //float *target = mdl->inverseKinematics(targetT);
-    float *target = (*it)->getTarget();
+    target = (*it)->getTarget();
     ctl->exec(dt, observed, target);
 }
 

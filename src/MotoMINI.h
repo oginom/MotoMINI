@@ -39,6 +39,7 @@ public:
     std::vector<Trajectory*> trajvec;
     RobotModel *mdl;
     PDController *ctl;
+    float *target;
 
     MotoMINI();
     void addTrajectory(Trajectory *t);

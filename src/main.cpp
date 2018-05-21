@@ -22,11 +22,34 @@ void test() {
     rep(i, 6) cout << ph[i] << " ";
     cout << endl;
 
-    Trajectory *t1 = new Trajectory();
-    mm->addTrajectory(t1);
-    for (int i=0; i<20; ++i) {
-        mm->exec(0.1);
+    float phi_min[6] = { -170,  -85,    0, -140, -120, -360};
+    float phi_max[6] = {  170,   90,  140,  140,  120,  360};
+    rep (i, 6) {
+        phi_min[i] *= (M_PI/180.0f);
+        phi_max[i] *= (M_PI/180.0f);
     }
+    Trajectory *t1 = new OginoTrajectory(phi_min, phi_max, 10.0);
+
+    float phi0[6] = {0,0,0,0,0,0};
+    float phif[6] = {0,M_PI*0.4,0,0,0,0};
+    Trajectory *t2 = new JointSpaceTrajectory(10.0, phi0, phif);
+
+    mm->addTrajectory(t2);
+
+    CGnuplot gplot;
+    std::vector<double> vecX, vecY;
+
+    for (int i=0; i<2000; ++i) {
+        mm->exec(0.01);
+
+        mm->mdl->setAngles(mm->target);
+        mm->mdl->forwardKinematics();
+        transmat T = mm->mdl->getTransform();
+        vecX.push_back(T.p[X]);
+        vecY.push_back(T.p[Z]);
+    }
+
+    gplot.Plot(vecX, vecY);
 
     /*/
     transmat t = transmat();
