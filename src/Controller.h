@@ -15,7 +15,8 @@ public:
 
 class PDController : public Controller {
 public:
-    int d;
+    float obs[6];
+    float tgt[6];
     PDController();
     void exec(float dt, float *observed, float *target);
 };
