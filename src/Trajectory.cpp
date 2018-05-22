@@ -5,7 +5,7 @@
 #include "Trajectory.h"
 
 void Trajectory::exec(float dt) {
-    std::cout << "Trajectory::exec" << std::endl;
+    //std::cout << "Trajectory::exec" << std::endl;
     spent += dt;
 }
 

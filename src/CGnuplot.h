@@ -12,6 +12,7 @@
 */
 
 #include <vector>
+#include <iostream>
 #include <fstream>
 #include <string>
 
@@ -160,6 +161,44 @@ public:
 					x++; y++;
 				}
 				Command("plot '%s' w lines", file_name);
+				break;
+		}
+	}
+
+	/*! @brief N次元要素を描画 */
+	template <class T, int N>
+	void PlotN(std::vector<T> contX, std::vector<T> (&contYs)[N], const int plot_type = PLOT_TYPE_OUTPUT, const char* file_name = TempFileName.c_str())
+	{
+		typename std::vector<T>::iterator itX = contX.begin();
+		typename std::vector<T>::iterator itYs[N];
+    for (int i=0; i<N; ++i) { itYs[i] = contYs[i].begin(); }
+		switch (plot_type) {
+			case PLOT_TYPE_NOOUTPUT:
+				//Command("plot '-' w lp");
+				//while (itX != contX.end() && itYs[0] != contYs[0].end()) {
+				//	Command("%f %f", *itX, *itYs[0]);
+				//	itX++; itYs[0]++;
+				//}
+				//Command("e");
+				std::cerr << "PlotN-PLOT_TYPE_NOOUTPUT not implemented" << std::endl;
+				break;
+
+			case PLOT_TYPE_OUTPUT:
+				std::ofstream fout(file_name);
+				while (itX != contX.end()) {
+					fout << *itX;
+					itX++;
+					for(int i=0; i<N; ++i) {
+						fout << " " << *itYs[i];
+						itYs[i]++;
+					}
+          fout << std::endl;
+				}
+				Command("plot '%s' u 1:2 w lines,\\", file_name);
+				for(int i=1; i<N-1; ++i) {
+					Command("     '%s' u 1:%d w lines,\\", file_name, i+2);
+				}
+				Command("     '%s' u 1:%d w lines", file_name, N+1);
 				break;
 		}
 	}

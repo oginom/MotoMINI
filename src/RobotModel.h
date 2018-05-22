@@ -13,13 +13,11 @@ public:
     virtual void setAngle(int i, float angle) {}
     virtual float getAngle(int i) { return 0; }
     virtual void setAngles(float *angles) {}
-    virtual float *getAngles() { return nullptr; }
+    virtual float *getAngles() { return NULL; }
     virtual void setTransform(transmat tra) {}
     virtual transmat getTransform() { return transmat(); }
     virtual bool forwardKinematics() { return false; }
-    virtual float *inverseKinematics(transmat T) {
-        return nullptr;
-    }
+    virtual bool inverseKinematics(transmat T, float *phi) { return false; }
 };
 
 class MotoMINIModel : public RobotModel {
@@ -46,7 +44,7 @@ public:
 
     bool forwardKinematics();
 
-    float *inverseKinematics(transmat T);
+    bool inverseKinematics(transmat T, float *phi);
 
     void exec(float dt);
 

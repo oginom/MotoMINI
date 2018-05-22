@@ -45,6 +45,19 @@ public:
             float dphif[6]) {
         setup(dur_, phi0, phif, dphi0, dphif);
     }
+    JointSpaceTrajectory(
+            float dur_,
+            RobotModel *mdl,
+            transmat T0,
+            transmat Tf) {
+        float phi0[6];
+        mdl->inverseKinematics(T0, phi0);
+        float phif[6];
+        mdl->inverseKinematics(Tf, phif);
+        float dphi0[6] = {0};
+        float dphif[6] = {0};
+        setup(dur_, phi0, phif, dphi0, dphif);
+    }
 
     void setup(
         float dur_,

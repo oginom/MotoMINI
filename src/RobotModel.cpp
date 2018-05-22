@@ -76,7 +76,7 @@ bool MotoMINIModel::forwardKinematics() {
     return true;
 }
 
-float *MotoMINIModel::inverseKinematics(transmat T) {
+bool MotoMINIModel::inverseKinematics(transmat T, float *phi) {
     static const float a0 = 20;
     static const float a1 = 165;
     static const float d3 = 165;
@@ -139,7 +139,7 @@ float *MotoMINIModel::inverseKinematics(transmat T) {
     T.R[2][0]*(-s12*c3*c4-c12*s4)
     );
 
-    return phi;
+    return true;
 }
 
 void MotoMINIModel::exec(float dt) {

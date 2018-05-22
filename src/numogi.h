@@ -67,6 +67,15 @@ ostream& operator << (ostream& o, const vector3<T>& v){
 
 typedef vector3<float> vector3f;
 
+//########## printarray ##########
+
+template <int N>
+ostream& operator << (ostream& o, const float (&v)[N]){
+    o << fixed << setprecision(8);
+    rep(i, N) o << v[i] << "\t";
+    return o;
+}
+
 //########## matrix33f  ##########
 
 //typedef float matrix33f[3][3];
