@@ -20,5 +20,5 @@ void PDController::exec(float dt, float *observed, float *target) {
         obs[i] = observed[i];
         tgt[i] = target[i];
     }
-    std::cout << "torque:" << torque << std::endl;
+    //std::cout << "torque:" << torque << std::endl;
 }

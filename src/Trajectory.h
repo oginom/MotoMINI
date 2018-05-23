@@ -28,7 +28,6 @@ class JointSpaceTrajectory : public Trajectory {
 public:
     float a0[6], a1[6], a2[6], a3[6];
     //RobotModel *mdl;
-    JointSpaceTrajectory() {}
     JointSpaceTrajectory(
             float dur_,
             float phi0[6],
@@ -71,6 +70,24 @@ public:
     float phi[6];
     float dphi[6];
 
+    virtual void exec(float dt);
+};
+
+class LineTrajectory : public Trajectory {
+public:
+    RobotModel *mdl;
+    transmat T0;
+    point pf;
+    LineTrajectory(
+            float dur_,
+            RobotModel *mdl_,
+            transmat T0_,
+            point pf_) {
+        dur = dur_;
+        mdl = mdl_;
+        T0 = T0_;
+        pf = pf_;
+    }
     virtual void exec(float dt);
 };
 

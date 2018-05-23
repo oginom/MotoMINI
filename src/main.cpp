@@ -33,6 +33,7 @@ void test() {
     float phif[6] = {M_PI*0.2,M_PI*0.4,0,0,0,0};
     Trajectory *t2 = new JointSpaceTrajectory(10.0, phi0, phif);
 
+    /*
     transmat T0 = transmat();
     T0.R = Rot(Z, 1) * Rot(Y, 0.5);
     T0.p = vec(50.0, 50.0, 50.0);
@@ -40,8 +41,23 @@ void test() {
     Tf.R = Rot(Z, 1) * Rot(Y, 0.5);
     Tf.p = vec(50.0, -50.0, 50.0);
     Trajectory *t3 = new JointSpaceTrajectory(10.0, mm->mdl, T0, Tf);
+    */
 
-    mm->addTrajectory(t3);
+    transmat T0 = transmat();
+    T0.R = Rot(Z, 1) * Rot(Y, 0.5);
+    T0.p = vec(50.0, 50.0, 50.0);
+    point pf = vec(100.0, -100.0, 100.0);
+    Trajectory *t4 = new LineTrajectory(10.0, mm->mdl, T0, pf);
+
+    mm->addTrajectory(t4);
+
+    transmat T00 = transmat();
+    T00.R = Rot(Z, 1) * Rot(Y, 0.5);
+    T00.p = vec(100.0, -100.0, 100.0);
+    point pf0 = vec(50.0, 50.0, 50.0);
+    Trajectory *t5 = new LineTrajectory(10.0, mm->mdl, T00, pf0);
+
+    //mm->addTrajectory(t5);
 
     CGnuplot gplot;
     std::vector<double> vecX;
