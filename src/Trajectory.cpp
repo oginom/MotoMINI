@@ -3,6 +3,7 @@
  */
 
 #include "Trajectory.h"
+#include <math.h>
 
 void Trajectory::exec(float dt) {
     //std::cout << "Trajectory::exec" << std::endl;
@@ -51,6 +52,17 @@ void LineTrajectory::exec(float dt) {
     transmat T = transmat();
     T.R = T0.R;
     T.p = T0.p * (1 - rr) + pf * rr;
+    mdl->inverseKinematics(T, target);
+}
+
+void CircleTrajectory::exec(float dt) {
+    this->Trajectory::exec(dt);
+    float r = min(1.0f, spent / dur);
+    float rr = -2 * r * r * r + 3 * r * r;
+    float angle = angle0 * (1 - rr) + anglef * rr;
+    transmat T = transmat();
+    T.R = R;
+    T.p = centerp + cosvec * cos(angle) + sinvec * sin(angle);
     mdl->inverseKinematics(T, target);
 }
 

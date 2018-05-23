@@ -91,6 +91,36 @@ public:
     virtual void exec(float dt);
 };
 
+class CircleTrajectory : public Trajectory {
+public:
+    RobotModel *mdl;
+    rotation R;
+    point centerp;
+    point cosvec;
+    point sinvec;
+    float angle0;
+    float anglef;
+    CircleTrajectory(
+            float dur_,
+            RobotModel *mdl_,
+            rotation R_,
+            point centerp_,
+            point cosvec_,
+            point sinvec_,
+            float angle0_,
+            float anglef_) {
+        dur = dur_;
+        mdl = mdl_;
+        R = R_;
+        centerp = centerp_;
+        cosvec = cosvec_;
+        sinvec = sinvec_;
+        angle0 = angle0_;
+        anglef = anglef_;
+    }
+    virtual void exec(float dt);
+};
+
 class OginoTrajectory : public Trajectory {
 public:
     float phi_min[6];
